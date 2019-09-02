@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Category.cs" />
     <Compile Include="ElevenNote.Data.cs" />
     <Compile Include="Migrations\201909012351304_InitialCreate.cs" />
     <Compile Include="Migrations\201909012351304_InitialCreate.Designer.cs">
@@ -62,6 +63,10 @@
     <Compile Include="Migrations\201909020254365_InitialMigration.cs" />
     <Compile Include="Migrations\201909020254365_InitialMigration.Designer.cs">
       <DependentUpon>201909020254365_InitialMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909021805103_CreatedCategoryClass.cs" />
+    <Compile Include="Migrations\201909021805103_CreatedCategoryClass.Designer.cs">
+      <DependentUpon>201909021805103_CreatedCategoryClass.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Note.cs" />
@@ -77,6 +82,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909020254365_InitialMigration.resx">
       <DependentUpon>201909020254365_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909021805103_CreatedCategoryClass.resx">
+      <DependentUpon>201909021805103_CreatedCategoryClass.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
