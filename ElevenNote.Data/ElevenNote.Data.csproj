@@ -68,6 +68,10 @@
     <Compile Include="Migrations\201909021805103_CreatedCategoryClass.Designer.cs">
       <DependentUpon>201909021805103_CreatedCategoryClass.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909030216030_modified category class.cs" />
+    <Compile Include="Migrations\201909030216030_modified category class.Designer.cs">
+      <DependentUpon>201909030216030_modified category class.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Note.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -85,6 +89,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909021805103_CreatedCategoryClass.resx">
       <DependentUpon>201909021805103_CreatedCategoryClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909030216030_modified category class.resx">
+      <DependentUpon>201909030216030_modified category class.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

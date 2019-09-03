@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ElevenNote.Data;
+using ElevenNote.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,7 +14,9 @@ namespace ElevenNote.WebMVC.Controllers
         // GET: Category
         public ActionResult Index()
         {
-            return View();
+            var service = new CategoryService();
+            var model = service.GetCategories();
+            return View(model);
         }
     }
 }
