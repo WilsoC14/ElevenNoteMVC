@@ -50,5 +50,52 @@ namespace ElevenNote.WebMVC.Controllers
             return View(model);
         }
 
+        //Get: Edit
+        public ActionResult Edit(int id)
+        {
+            var service = new CategoryService();
+            var detail = service.GetCategoryById(id);
+            var model = new CategoryEdit
+            {
+                CategoryId = detail.CategoryId,
+                Name = detail.Name,
+                Description = detail.Description
+            };
+            return View(model);
+        }
+
+        //Post Edit
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit (int id, CategoryEdit model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            if (model.CategoryId != id)
+            {
+                ModelState.AddModelError("", "Id Mismatch");
+                return View(model);
+            }
+
+            var service = new CategoryService();
+            if(service.UpdateCategory(model))
+            {
+                TempData["SaveResult"] = "Your Category was updated.";
+                return RedirectToAction("Index");
+            }
+            ModelState.AddModelError("", "Your Category could not be updated");
+            return View();
+
+        }
+
+
+        public ActionResult Details (int id)
+        {
+            var service = new CategoryService();
+            var model = service.GetCategoryById(id);
+            return View(model);
+        }
     }
 }

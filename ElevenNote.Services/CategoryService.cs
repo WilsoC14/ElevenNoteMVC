@@ -15,21 +15,16 @@ namespace ElevenNote.Services
         //Simple constructor -- Guid Id not necessary --- this will be a simpler class than the Note
         public CategoryService()
         {
-
+            
         }
 
-        public List<Category> Index()
-        {
-            List<Category> categoryList = _db.Categories.ToList();
-            List<Category> orderedList = categoryList.OrderBy(category => category.Name).ToList();
-            return orderedList;
 
-        }
         //C of Crud for creating Category
         public bool CreateCategory(CategoryCreate model)
         {
             var entity = new Category()
             {
+                
                 Name = model.Name,
                 Description = model.Description
             };
@@ -37,47 +32,77 @@ namespace ElevenNote.Services
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Categories.Add(entity);
-               return ctx.SaveChanges() == 1;
-           }
-
+           return ctx.SaveChanges() == 1;
 
             }
-    
-
-    public IEnumerable<CategoryListItem> GetCategories()
-    {
-        using (var ctx = _db)
+        }
+        //R of cRud for reading list of Categories
+        public List<Category> Index()
         {
-            var query = ctx.Categories.Select(e =>
-                                                     new CategoryListItem
-                                                     {
-                                                         CategoryId = e.CategoryId,
-                                                         Description = e.Description,
-                                                         Name = e.Name
-                                                     }
-                                                      );
-            return query.ToArray();
+            List<Category> categoryList = _db.Categories.ToList();
+            List<Category> orderedList = categoryList.OrderBy(category => category.Name).ToList();
+            return orderedList;
 
         }
-    }
-    //C of Crud
-    //public bool CreateCategory(CategoryCreate model)
-    //{
-    //    var entity = new Category()
-    //    {
-    //        if (ModelState.IsValid)
-    //    {
-    //        Name = model.Name,
-    //        Description = model.Description,
-    //       }
 
-    //}
+        //U of crUd for update a Category
+        public bool UpdateCategory (CategoryEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Categories.Single(e => e.CategoryId == model.CategoryId);
+                
+                entity.Name = model.Name;
+                entity.Description = model.Description;
+
+                return ctx.SaveChanges() == 1;
+
+
+               }
+        }
+
+
+            //Helper Method to create CategoryListItem from Db contents
+        public IEnumerable<CategoryListItem> GetCategories()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query = ctx.Categories.Select(e =>
+                                                         new CategoryListItem
+                                                         {
+                                                             CategoryId = e.CategoryId,
+                                                             Description = e.Description,
+                                                             Name = e.Name
+                                                         }
+                                                          );
+                return query.ToArray();
+
+            }
+        }
+       
+
+
+        //Helper Method to get Category by Id
+        public CategoryDetail GetCategoryById (int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Categories.Single(e => e.CategoryId == id);
+                return new CategoryDetail
+                {
+                    CategoryId = entity.CategoryId,
+                    Name = entity.Name,
+                    Description = entity.Description
+                };
+                
+            }
+        }
+
+
+
+    }
 
 
 
 }
-
-
-
-    }
 
