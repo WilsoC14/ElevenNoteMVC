@@ -9,13 +9,15 @@ using System.Threading.Tasks;
 namespace ElevenNote.Services
 {
    public class NoteService
-    {
+    {   // create a Guid field so we can generate or call a Guid across multiple methods
         private readonly Guid _userId;
+        //NoteService class just needs an ID -- will elaborate later
         public NoteService (Guid userId)
         {
             _userId = userId;
         }
-        public bool CreateNote (NoteCreate model)
+        //C of CRUD for creating  Note
+        public bool CreateNote (NoteCreate model)   //NoteCreate is a Model that 
         {
             var entity =
                 new Note()

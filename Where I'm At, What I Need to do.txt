@@ -1,0 +1,5 @@
+1)Adding Category Class, CRUD methods & views, Adding Category to Database, Creating all assemblies
+		Class created, Model Classes made for Cruds, Category Database Created - migrated & updated(Though not sure if this was needed because
+		Note's code/properties has not been altered yet. Assemblies created to mimic Note.
+		Git add .
+		Git commit -m "Created Category class,Db,and Model Assemblies"

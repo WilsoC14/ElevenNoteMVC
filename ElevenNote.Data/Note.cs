@@ -9,9 +9,9 @@ namespace ElevenNote.Data
 {
     public class Note
     {
-        [Key]
+        [Key]       //NoteId is assigned my index of Database -- Confirm this
         public int NoteId { get; set; }
-        [Required]
+        [Required]      //Owner Id is generated and assigned 
         public Guid OwnerId { get; set; }
         [Required]
         public string Title { get; set; }

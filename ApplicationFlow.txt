@@ -1,0 +1,12 @@
+Run App-
+URL: localhost:xxxxx   --> Default Index View from HomeController
+SlnExplorer: WebMVC>Views>Shared>_Layout.cshtml
+Code:	Line 25		<li>@Html.ActionLink("Notes", "Index", "Note")</li>
+Function:			Displays  1)link text: "Notes" 2) ActionName "Index" 3) ControllerName "Note"
+User Interaction: Click "Notes" in navbar
+Result: User is prompted to login - either create account or login -- Will detail setting this up later
+			**User created account and logged in
+			**Password restrictions can be adjusted in: ApplicationUserManager Class
+SlnExplorer: WebMVC.App_Start.IdentityConfig.cs
+Code:	Line 37		public class ApplicationUserManager : UserManager<ApplicationUser>
+Function:			Holds logic for some user management needs
