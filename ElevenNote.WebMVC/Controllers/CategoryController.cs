@@ -90,6 +90,27 @@ namespace ElevenNote.WebMVC.Controllers
 
         }
 
+        //Get Delete
+        [ActionName("Delete")]
+        public ActionResult Delete (int id)
+        {
+            var service = new CategoryService();
+            var model = service.GetCategoryById(id);
+            return View(model);
+        }
+
+        //Post Delete
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletePost(int id)
+        {
+            var service = new CategoryService();
+            service.DeleteCategory(id);
+            TempData["SaveResult"] = "Your note was deleted";
+            return RedirectToAction("Index");
+        }
+
 
         public ActionResult Details (int id)
         {

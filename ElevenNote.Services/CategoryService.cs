@@ -61,6 +61,28 @@ namespace ElevenNote.Services
                }
         }
 
+        //D of cruD for Delete a Category
+        public bool DeleteCategory(int categoryId)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Categories.Single(e => e.CategoryId == categoryId);
+                ctx.Categories.Remove(entity);
+                return ctx.SaveChanges() == 1;
+
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
 
             //Helper Method to create CategoryListItem from Db contents
         public IEnumerable<CategoryListItem> GetCategories()
