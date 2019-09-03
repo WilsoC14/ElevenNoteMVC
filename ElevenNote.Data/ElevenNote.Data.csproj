@@ -76,6 +76,10 @@
     <Compile Include="Migrations\201909030416443_Adjusted class properties.Designer.cs">
       <DependentUpon>201909030416443_Adjusted class properties.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909030540570_AddedForeignKeyToNote.cs" />
+    <Compile Include="Migrations\201909030540570_AddedForeignKeyToNote.Designer.cs">
+      <DependentUpon>201909030540570_AddedForeignKeyToNote.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Note.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -99,6 +103,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909030416443_Adjusted class properties.resx">
       <DependentUpon>201909030416443_Adjusted class properties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909030540570_AddedForeignKeyToNote.resx">
+      <DependentUpon>201909030540570_AddedForeignKeyToNote.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

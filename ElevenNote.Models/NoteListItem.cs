@@ -14,5 +14,7 @@ namespace ElevenNote.Models
                         // UTC = Universal Time Code
         [Display(Name ="Created")]
         public DateTimeOffset CreatedUtc { get; set; }
+        public int CategoryId { get; set; }
+        public virtual Data.Category Category { get; set; }
     }
 }

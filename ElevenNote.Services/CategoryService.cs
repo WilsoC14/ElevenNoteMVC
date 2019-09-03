@@ -10,7 +10,7 @@ namespace ElevenNote.Services
 {
     public class CategoryService
     {
-        //private List<Category> _categoryList = new List<Category>();
+       
         private ApplicationDbContext _db = new ApplicationDbContext();
         //Simple constructor -- Guid Id not necessary --- this will be a simpler class than the Note
         public CategoryService()
