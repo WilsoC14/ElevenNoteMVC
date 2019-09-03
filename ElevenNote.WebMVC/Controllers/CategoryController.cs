@@ -37,8 +37,17 @@ namespace ElevenNote.WebMVC.Controllers
                 return View(model);
             }
 
-            var service = CreateCategoryService();
+            var service = new CategoryService();
+           // return service;
 
+            
+            if (service.CreateCategory(model))
+            {
+                TempData["SaveResult"] = "Your note was created.";
+                return RedirectToAction("Index");
+            };
+            ModelState.AddModelError("", "Note could not be created.");
+            return View(model);
         }
 
     }
