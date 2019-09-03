@@ -9,8 +9,7 @@ namespace ElevenNote.Models
 {
    public class CategoryCreate
     {
-        [Key]
-        public string CategoryId { get; set; }
+        
         [Required]
         public string Name { get; set; }
         public string Description { get; set; }

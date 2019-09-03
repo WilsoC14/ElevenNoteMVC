@@ -1,4 +1,5 @@
 ﻿using ElevenNote.Data;
+using ElevenNote.Models;
 using ElevenNote.Services;
 using System;
 using System.Collections.Generic;
@@ -18,5 +19,27 @@ namespace ElevenNote.WebMVC.Controllers
             var model = service.GetCategories();
             return View(model);
         }
+
+        //Get: Create
+        public ActionResult Create()
+        {
+
+            return View();
+        }
+
+        //Post: Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(CategoryCreate model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var service = CreateCategoryService();
+
+        }
+
     }
 }

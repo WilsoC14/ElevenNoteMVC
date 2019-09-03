@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ElevenNote.Services
 {
-   public class CategoryService
+    public class CategoryService
     {
         //private List<Category> _categoryList = new List<Category>();
         private ApplicationDbContext _db = new ApplicationDbContext();
@@ -25,39 +25,57 @@ namespace ElevenNote.Services
             return orderedList;
 
         }
-
-        public IEnumerable<CategoryListItem> GetCategories()
+        //C of Crud for creating Category
+        public bool CreateCategory(CategoryCreate model)
         {
-            using (var ctx = _db)
+            var entity = new Category()
             {
-                var query = ctx.Categories.Select(e =>
-                                                         new CategoryListItem
-                                                         {
-                                                             CategoryId = e.CategoryId,
-                                                             Description = e.Description,
-                                                             Name = e.Name
-                                                         }
-                                                          );
-                return query.ToArray();
+                Name = model.Name,
+                Description = model.Description
+            };
+
+            using (var ctx = new ApplicationDbContext())
+            {
+                ctx.Categories.Add(entity);
+               return ctx.SaveChanges() == 1;
+           }
+
 
             }
+    
+
+    public IEnumerable<CategoryListItem> GetCategories()
+    {
+        using (var ctx = _db)
+        {
+            var query = ctx.Categories.Select(e =>
+                                                     new CategoryListItem
+                                                     {
+                                                         CategoryId = e.CategoryId,
+                                                         Description = e.Description,
+                                                         Name = e.Name
+                                                     }
+                                                      );
+            return query.ToArray();
+
         }
-            //C of Crud
-            //public bool CreateCategory(CategoryCreate model)
-            //{
-            //    var entity = new Category()
-            //    {
-            //        if (ModelState.IsValid)
-            //    {
-            //        Name = model.Name,
-            //        Description = model.Description,
-            //       }
+    }
+    //C of Crud
+    //public bool CreateCategory(CategoryCreate model)
+    //{
+    //    var entity = new Category()
+    //    {
+    //        if (ModelState.IsValid)
+    //    {
+    //        Name = model.Name,
+    //        Description = model.Description,
+    //       }
 
-            //}
+    //}
 
 
 
-        }
+}
 
 
 
